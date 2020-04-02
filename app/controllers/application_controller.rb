@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-	before_action :authenticate_user!
 	before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 	protect_from_forgery with: :exception
 
