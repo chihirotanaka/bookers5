@@ -15,14 +15,18 @@ class UsersController < ApplicationController
 # 自己紹介編集
   def edit
   	@user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user.id)
+    else render :edit
   end
+end
 # 自己紹介アップデート
   def update
   	@user = User.find(params[:id])
   	if @user.update(user_params)
   		redirect_to user_path(@user.id), notice: "successfully updated user!"
   	else
-  		render "edit"
+  		render :edit
   	end
   end
 
