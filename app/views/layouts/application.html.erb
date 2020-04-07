@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,7 +15,7 @@
       <div class="container">
 
         <nav class="nav navbar-nav navbar-left">
-          <title>Bookers</title>
+          <span>Bookers</span>
         </nav>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,6 @@
       <p id="notice"><%= notice %></p>
       <!--デバイスでnotice設定されているので呼び出してるだけ-->
       <%= yield %>
-
     </div>
   </body>
 </html>

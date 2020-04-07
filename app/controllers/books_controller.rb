@@ -3,6 +3,8 @@ class BooksController < ApplicationController
   def show
     @user = User.all
   	@book = Book.find(params[:id])
+    # コメント入力フォームにインスタンスを渡す
+    @post_comment =PostComment.new
     @books = Book.all
     @booknew = Book.new
   end
