@@ -43,7 +43,7 @@
 					</td>
 					<!-- コメント書き換え前 -->
 					<td><span>コメント:
-						<%= @book.favorites.count %></span>
+						<%= @book.post_comments.count %></span>
 					</td>
 　　　　　　　<!-- ここまで -->
                <% if @book.user.id == current_user.id%>
@@ -53,6 +53,27 @@
 			    <!-- もしカレントユーザーなら表示 -->
 				</tr>
 			</table>
+			<!-- コメントをここに表示 -->
+			<% @book.post_comments.each do |comment| %>
+			<table>
+				<tr>
+					<td>
+						<%= link_to (@book.user) do %>
+						<%= attachment_image_tag(comment.user, :profile_image, :fill, 20, 20, fallback:
+						 "no-image-mini.jpg") %><br>
+						<%= comment.user.name %>
+						<% end %>
+					</td>
+					<td><%= comment.comment %></td>
+					<td>
+						<% if current_user == comment.user %>
+						<%= link_to "Destroy", book_post_comments_path(comment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger " %>
+						<% end %>
+					</td>
+				</tr>
+			</table>
+
+			<% end %>
 			<!-- コメント入力のフォーム -->
 			<%= form_for [@book,@post_comment] do |f| %>
 			<div class="row">

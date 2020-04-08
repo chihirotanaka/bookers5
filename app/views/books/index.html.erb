@@ -63,7 +63,7 @@
 					</td>
 					<!-- コメント数 -->
 					<td>
-						<a href ="#comments">コメント:<%= book.post_comments.count %></a>
+						<a href ="book_path(book.id)">コメント:<%= book.post_comments.count %></a>
 				    </td>
 				</tr>
 				<% end %>
