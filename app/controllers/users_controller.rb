@@ -6,6 +6,18 @@ class UsersController < ApplicationController
   	@books = @user.books
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
   end
+  # フォロー機能
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.follows
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
+  end
+
 # 共有メンバーページ
   def index
   	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
